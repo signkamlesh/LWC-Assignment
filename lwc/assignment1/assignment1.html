@@ -1,0 +1,35 @@
+<template>
+    <div class='slds-grid mainDiv'>
+       
+        <div class='slds-col mainDiv'>            
+            <lightning-input name = 'Name' label='Name' onchange={handleInputSearch}></lightning-input><br/>
+            <lightning-input name = 'RecordNumber' label='Records#' onchange={handleInputSearch}></lightning-input>
+            <lightning-button label='Search' onclick={handleClick}></lightning-button>   
+        </div>
+
+        <div class='slds-col mainDiv'>    
+            <div class='filterBlock'>    
+                <div class='slds-grid'> 
+                    <div class='slds-row'>
+                        <lightning-input name = 'SearchFilerRecord' label=' ' onchange={handleInputSearch}></lightning-input>                                       
+                    </div>
+                  
+                  <!--    </br> <lightning-button label='Filter Data' onclick={handleFilterData}></lightning-button>  -->
+                    
+                </div>
+            </div>
+                <!-- filer data
+                 calling of child component and diplaying the data
+             -->
+            <template if:true ={copyAccount}>
+                <template for:each={copyAccount} for:item ='tempRec'>
+                    <c-assignment1-child account={tempRec} key={tempRec.Id}></c-assignment1-child>                              
+                </template>                    
+             </template>
+            <template if:true={error}>
+                    <p>{error}</p>
+             </template>
+        </div>
+
+      </div>
+</template>
